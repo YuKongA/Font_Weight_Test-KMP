@@ -11,7 +11,7 @@ plugins {
 }
 
 val generatedSrcDir = layout.buildDirectory.dir("generated").get().asFile.resolve("fontWeightTest")
-val unicodeVersion = "17.0.0"
+val unicodeVersion = "18.0.0"
 val unicodeDraftBaseUrl = "https://unicode.org/Public/draft/ucd"
 val unicodeBaseUrl = "https://unicode.org/Public/$unicodeVersion/ucd"
 val coverageResourceDir = projectDir.resolve("src/commonMain/composeResources/files")

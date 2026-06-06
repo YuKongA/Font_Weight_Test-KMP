@@ -26,8 +26,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.dp
 import fontweighttest.shared.generated.resources.Res
 import fontweighttest.shared.generated.resources.home
 import fontweighttest.shared.generated.resources.monospace
@@ -56,7 +54,7 @@ import top.yukonga.miuix.kmp.basic.ScrollBehavior
 import top.yukonga.miuix.kmp.blur.BlendColorEntry
 import top.yukonga.miuix.kmp.blur.BlurColors
 import top.yukonga.miuix.kmp.blur.LayerBackdrop
-import top.yukonga.miuix.kmp.blur.isRenderEffectSupported
+import top.yukonga.miuix.kmp.blur.isRuntimeShaderSupported
 import top.yukonga.miuix.kmp.blur.layerBackdrop
 import top.yukonga.miuix.kmp.blur.rememberLayerBackdrop
 import top.yukonga.miuix.kmp.blur.textureBlur
@@ -94,7 +92,7 @@ fun App(
             LocalMainPagerState provides mainPagerState,
         ) {
             val page by remember { derivedStateOf { pagerState.targetPage } }
-            val blurSupported = isRenderEffectSupported()
+            val blurSupported = isRuntimeShaderSupported()
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
                 bottomBar = {
@@ -104,7 +102,6 @@ fun App(
                             Modifier
                                 .textureBlur(
                                     backdrop = backdrop,
-                                    blurRadius = 25f * LocalDensity.current.density,
                                     shape = RectangleShape,
                                     colors = BlurColors(
                                         blendColors = listOf(

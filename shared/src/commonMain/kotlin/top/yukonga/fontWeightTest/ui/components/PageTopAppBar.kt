@@ -14,7 +14,7 @@ import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.blur.Backdrop
 import top.yukonga.miuix.kmp.blur.BlendColorEntry
 import top.yukonga.miuix.kmp.blur.BlurColors
-import top.yukonga.miuix.kmp.blur.isRenderEffectSupported
+import top.yukonga.miuix.kmp.blur.isRuntimeShaderSupported
 import top.yukonga.miuix.kmp.blur.textureBlur
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
@@ -24,7 +24,7 @@ fun PageTopAppBar(
     scrollBehavior: ScrollBehavior,
     backdrop: Backdrop
 ) {
-    val blurSupported = isRenderEffectSupported()
+    val blurSupported = isRuntimeShaderSupported()
     val topBarColor = if (blurSupported) Color.Transparent else MiuixTheme.colorScheme.surface
     BoxWithConstraints {
         val isCompact = maxWidth < 768.dp
@@ -32,7 +32,6 @@ fun PageTopAppBar(
             Modifier
                 .textureBlur(
                     backdrop = backdrop,
-                    blurRadius = 25f * LocalDensity.current.density,
                     shape = RectangleShape,
                     colors = BlurColors(
                         blendColors = listOf(
