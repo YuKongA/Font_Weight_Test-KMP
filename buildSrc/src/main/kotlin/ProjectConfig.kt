@@ -1,5 +1,5 @@
 object ProjectConfig {
-    const val JVM_VERSION = 21
+    const val JVM_VERSION = 25
     const val APP_NAME = "FontWeightTest"
     const val PACKAGE_NAME = "top.yukonga.fontWeightTest"
     const val VERSION_NAME = "1.6.5"

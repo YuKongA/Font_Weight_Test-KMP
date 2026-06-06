@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
@@ -91,7 +90,7 @@ fun App(
         CompositionLocalProvider(
             LocalMainPagerState provides mainPagerState,
         ) {
-            val page by remember { derivedStateOf { pagerState.targetPage } }
+            val page = mainPagerState.selectedPage
             val blurSupported = isRuntimeShaderSupported()
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
